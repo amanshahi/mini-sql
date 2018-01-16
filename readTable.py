@@ -232,10 +232,13 @@ class Table:
 					for i in range(len(a2)): a2[i]=tuple(a2[i])
 					a2=list(set(a2))
 					for i in range(len(a2)): a2[i]=list(a2[i])
-			else:
+			elif 'where' in query:
 				q1 = query[5]
 				a2 = self.whereRun(q1,self.starAns,self.starRow)
+			else:
+				a2 = [self.starAns[i] for i in range(len(self.starAns))]
 			afterWhere = a2
+
 		except:pass
 		finalAns=[]
 		for it in self.aggregate:
