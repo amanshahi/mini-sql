@@ -15,3 +15,4 @@ if FL == 0:
 		for j in ansRows:
 			print i[ansRows.index(j)],
 		print 
+		
