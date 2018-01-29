@@ -55,7 +55,7 @@ class Table:
 		TEMP = []
 		if '>=' in cond:
 			l,r = cond.split('>=')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -69,7 +69,7 @@ class Table:
 					if int(i[allRow.index(l)]) >= int(i[allRow.index(r)]): TEMP.append(i)
 		elif '<=' in cond:
 			l,r = cond.split('<=')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -83,7 +83,7 @@ class Table:
 					if int(i[allRow.index(l)]) <= int(i[allRow.index(r)]): TEMP.append(i)
 		elif '!=' in cond:
 			l,r = cond.split('!=')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -98,7 +98,7 @@ class Table:
 					if int(i[allRow.index(l)]) != int(i[allRow.index(r)]): TEMP.append(i)
 		elif '=' in cond:
 			l,r = cond.split('=')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -113,7 +113,7 @@ class Table:
 		
 		elif '>' in cond:
 			l,r = cond.split('>')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -128,7 +128,7 @@ class Table:
 						TEMP.append(i)
 		elif '<' in cond:
 			l,r = cond.split('<')
-			if r not in self.tables:
+			if 'table' not in r:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -154,7 +154,6 @@ class Table:
 			for i in tempAns:
 				if S not in tempRow: sys.exit("syntax-error!")
 				ans = max(ans, int(i[tempRow.index(S)]))
-			if len(tempAns) == 0: ans="no match"
 			ans=[[ans]]
 		if 'min' in cond[0]:
 			S=cond[0][4:len(cond[0])-1]
@@ -163,7 +162,6 @@ class Table:
 			for i in tempAns:
 				if S not in tempRow: sys.exit("syntax-error!")
 				ans = min(ans, int(i[tempRow.index(S)]))
-			if len(tempAns) == 0: ans="no match"
 			ans=[[ans]]
 		if 'sum' in cond[0]:
 			S=cond[0][4:len(cond[0])-1]
@@ -172,8 +170,6 @@ class Table:
 			for i in tempAns:
 				if S not in tempRow: sys.exit("syntax-error!")
 				ans +=int(i[tempRow.index(S)])
-			if len(tempAns) == 0: ans="no match"
-			
 			ans=[[ans]]
 		if 'avg' in cond[0]:
 			S=cond[0][4:len(cond[0])-1]
@@ -184,7 +180,6 @@ class Table:
 				ans += int(i[tempRow.index(S)])
 			if len(tempAns) != 0:ans=ans/float(len(tempAns))
 			else: ans=0.0
-			
 			ans=[[ans]]
 		if 'dis' in cond:
 			ans=[]
@@ -198,7 +193,6 @@ class Table:
 				ANS.append(tuple(GG))
 				ans = list(set(ANS))
 				for i in range(len(ans)): ans[i] = list(ans[i])
-			if len(tempAns) == 0: ans="no match"
 		return ans
 	def runQuery(self, query):
 		query = query.split()
@@ -238,7 +232,6 @@ class Table:
 			else:
 				a2 = [self.starAns[i] for i in range(len(self.starAns))]
 			afterWhere = a2
-
 		except:pass
 		finalAns=[]
 		for it in self.aggregate:
