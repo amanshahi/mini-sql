@@ -55,7 +55,7 @@ class Table:
 		TEMP = []
 		if '>=' in cond:
 			l,r = cond.split('>=')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -69,7 +69,7 @@ class Table:
 					if int(i[allRow.index(l)]) >= int(i[allRow.index(r)]): TEMP.append(i)
 		elif '<=' in cond:
 			l,r = cond.split('<=')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -83,7 +83,7 @@ class Table:
 					if int(i[allRow.index(l)]) <= int(i[allRow.index(r)]): TEMP.append(i)
 		elif '!=' in cond:
 			l,r = cond.split('!=')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -98,7 +98,7 @@ class Table:
 					if int(i[allRow.index(l)]) != int(i[allRow.index(r)]): TEMP.append(i)
 		elif '=' in cond:
 			l,r = cond.split('=')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -113,7 +113,7 @@ class Table:
 		
 		elif '>' in cond:
 			l,r = cond.split('>')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
@@ -128,7 +128,7 @@ class Table:
 						TEMP.append(i)
 		elif '<' in cond:
 			l,r = cond.split('<')
-			if 'table' not in r:
+			if r not in allRow:
 				for i in allAns:
 					if (l not in allRow):
 						self.FL=1
